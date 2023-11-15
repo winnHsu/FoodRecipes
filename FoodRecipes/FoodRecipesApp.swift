@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct FoodRecipesApp: App {
+    @StateObject var favoritesViewModel = FavoritesViewModel()
+    @StateObject var historyViewModel = HistoryViewModel()
+    @StateObject var settingsViewModel = SettingsViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FoodTabView()
+                .environmentObject(favoritesViewModel)
+                .environmentObject(historyViewModel)
+                .environmentObject(settingsViewModel)
         }
+    }
+}
+
+
+struct Previews_FoodRecipesApp_Previews: PreviewProvider {
+    static var previews: some View {
+        FoodTabView()
     }
 }
