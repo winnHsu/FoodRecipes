@@ -25,7 +25,7 @@ struct MealsListView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 15) {
                         ForEach(viewModel.searchResults) { meal in
-                            NavigationLink(destination: MealDetailView(meal: meal)) {
+                            NavigationLink(destination: MealDetailView(meal: meal, favoritesViewModel: favoritesViewModel)) {
                                 MealCellView(meal: meal)
                             }
                         }
@@ -53,44 +53,6 @@ struct MealsListView: View {
         .onAppear {
             viewModel.fetchMeals()
         }
-        .environment(\.colorScheme, settingsViewModel.colorScheme) // Apply the color scheme here
-    }
-}
-
-
-struct SearchBar: UIViewRepresentable {
-    @Binding var text: String
-    
-    func makeUIView(context: Context) -> UISearchBar {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
-        searchBar.placeholder = "Search Desserts"
-        searchBar.searchBarStyle = .minimal
-        searchBar.autocapitalizationType = .none
-        return searchBar
-    }
-    
-    func updateUIView(_ uiView: UISearchBar, context: Context) {
-        uiView.text = text
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(text: $text)
-    }
-    
-    class Coordinator: NSObject, UISearchBarDelegate {
-        @Binding var text: String
-        
-        init(text: Binding<String>) {
-            _text = text
-        }
-        
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
-        }
-        
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.resignFirstResponder()
-        }
+        .environment(\.colorScheme, settingsViewModel.colorScheme)
     }
 }

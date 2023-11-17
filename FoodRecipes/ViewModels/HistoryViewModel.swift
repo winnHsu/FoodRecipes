@@ -18,11 +18,3 @@ class HistoryViewModel: ObservableObject {
         events.sort { $0.timestamp > $1.timestamp }
     }
 }
-
-struct LikeEvent: Identifiable {
-    let id = UUID()
-    let mealId: String
-    let mealName: String
-    let isLiked: Bool
-    let timestamp: Date
-}

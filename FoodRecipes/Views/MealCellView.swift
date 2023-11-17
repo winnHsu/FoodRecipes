@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-import SwiftUI
-
 struct MealCellView: View {
     @EnvironmentObject var favoritesViewModel: FavoritesViewModel
     @EnvironmentObject var historyViewModel: HistoryViewModel

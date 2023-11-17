@@ -24,7 +24,7 @@ struct SettingsView: View {
             
             Section(header: Text("More")) {
                 Button(action: {
-                    openURL(URL(string: "https://google.com")!)
+                    openURL(URL(string: "https://www.linkedin.com/in/winn-hsu/")!)
                 }) {
                     HStack {
                         Text("Visit Developer")
@@ -34,7 +34,7 @@ struct SettingsView: View {
                 }
                 
                 Button(action: {
-                    openURL(URL(string: "https://google.com")!)
+                    openURL(URL(string: "https://github.com/winnHsu/FoodRecipes")!)
                 }) {
                     HStack {
                         Text("View Repository")
